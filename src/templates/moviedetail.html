@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="h-screen relative bg-no-repeat pb-8 pl-6 flex justify-center items-end bg-cover" style="background-image: url('{{ movie.image.url }}');">
+
+    <h2>
+        {{movie.title}}
+    </h2>
+
+</div>
+<br>
+<div class="container ">
+    <a href="{% url 'app:play_movie' movie_id=movie.uuid %}" class="flex items-center bg-white py-2 px-5 rounded-md">
+        <ion-icon name="play" class="text-2xl"></ion-icon>
+        <span class="ml-3 font-medium">
+            Play
+        </span>
+    </a>
+    <div class="row">
+        <div class="col-10">
+
+            <br>
+            <p>
+                Genre: {{movie.genre}} <br>
+
+                Description: <br>
+                {{movie.description}} <br>
+                Publish Date: {{movie.created|date:"D d M Y"}}
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

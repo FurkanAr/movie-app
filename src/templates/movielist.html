@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="h-screen relative bg-no-repeat pb-8 pl-6 flex justify-end items-end bg-cover" style="background-image: url('{% static 'assets/batman.jpg' %}')">
+    <div>
+        <h2 class="text-6xl font-semibold text-white my-4">
+            Batman
+        </h2>
+        <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus repellendus odit perspiciatis nostrum culpa exercitationem quis. Ab obcaecati odio minus. Dolorum sapiente eaque, repellendus ea fugiat amet fuga libero at!
+        </p>
+
+    </div>
+</section> 
+<br> 
+<div class="container">
+    <h1 class="text-center"> Popular Movies </h1>
+    <div class="row">
+        <div class="col-10">
+            <div class="card-group">
+                {% for movie in movies %}
+                <div class="card">
+                    <a href="{% url 'app:movie_detail' movie_id=movie.uuid %}">
+                        <img style=" width: 600px; height: 320px;" src="{{ movie.image.url }}" class="card-img-top" alt="...">
+
+                         </a>
+                  <div class="card-body" style="background-color: white;">
+
+                    <h5 class="card-title">{{ movie.title|title }}  </h5>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
